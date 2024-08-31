@@ -4,8 +4,8 @@ import { AuthContext } from '../ContextProvider/ContextProvider';
 
 const Login = () => {
 
-  const {login} = useContext(AuthContext)
-  const [error,setError] = useState("")
+  const {signInUser,signInwithGoogle} = useContext(AuthContext);
+  const [error,setError] = useState("");
 
   
   const handleLogin = (e) => {
@@ -13,20 +13,31 @@ const Login = () => {
 
     const email = e.target.email.value; 
     const password = e.target.password.value;
+
     console.log(email,password);
 
-    login()
-    then(result=>{
+    signInUser(email,password)
+    .then(result=>{
       console.log(result.user);
-      e.target.reset()}
+      e.target.reset()
+      }
     )
     .catch(() => {
       setError("Login Error")
     })
+  }
 
-
-
-
+  const handleGoogleSignIn = (e) => {
+     
+    signInwithGoogle()
+    .then(result=>{
+      console.log(result.user);
+      e.target.reset()
+      navigate('/')
+    })
+    .catch(error => {
+      console.log(error);
+    })
   }
 
       // show the top of the page after clicking on "Read more"
@@ -41,7 +52,7 @@ const Login = () => {
       <h1 className="text-5xl font-bold mb-6">Login now!</h1>
      
     </div>
-    <div className="card bg-base-100 w-full shrink-0 shadow-2xl">
+    <div className="card bg-base-100 w-full shadow-2xl">
       <form onSubmit={handleLogin} className="card-body">
         <div className="form-control">
           <label className="label">
@@ -60,6 +71,10 @@ const Login = () => {
         </div>
         <div className="form-control mt-6">
           <button className="btn btn-primary">Login</button>
+        </div>
+
+        <div className='flex justify-center'>
+        <button onClick={handleGoogleSignIn} className="btn-ghost p-2 rounded-sm">Google</button>
         </div>
       </form>
 
