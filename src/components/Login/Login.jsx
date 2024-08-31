@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { AuthContext } from '../ContextProvider/ContextProvider';
 
 const Login = () => {
@@ -14,12 +14,12 @@ const Login = () => {
     const email = e.target.email.value; 
     const password = e.target.password.value;
 
-    console.log(email,password);
+    // console.log(email,password);
 
     signInUser(email,password)
     .then(result=>{
       console.log(result.user);
-      e.target.reset()
+      // e.target.reset()
       }
     )
     .catch(() => {
@@ -33,7 +33,7 @@ const Login = () => {
     .then(result=>{
       console.log(result.user);
       e.target.reset()
-      navigate('/')
+      Navigate('/')
     })
     .catch(error => {
       console.log(error);

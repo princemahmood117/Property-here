@@ -2,15 +2,14 @@ import { useEffect } from "react";
 import { useLoaderData } from "react-router-dom";
 import Property from "../property/Property";
 
-
 const Properties = () => {
 
        useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
-
     const properties = useLoaderData();
+    console.log(properties);
 
 
     return (

@@ -29,7 +29,6 @@ const ContextProvider = ({children}) => {
     const logOut = () => {
         setLoading(true)
         return signOut(auth)
-
     }
 
     const googleProvider = new GoogleAuthProvider()
@@ -40,7 +39,6 @@ const ContextProvider = ({children}) => {
     }
 
     // observer
-
     useEffect(()=>{
 
         const unSubscribe = onAuthStateChanged(auth, (currentUser) =>{

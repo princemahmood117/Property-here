@@ -1,7 +1,6 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root from "./components/Root/Root.jsx";
 import Home from "./components/Home/Home.jsx";
@@ -12,6 +11,14 @@ import Register from "./components/Register/Register.jsx";
 import ErrorPage from "./components/ErrorPage/ErrorPage.jsx";
 import Properties from "./components/Properties/Properties.jsx";
 import ContextProvider from "./components/ContextProvider/ContextProvider.jsx";
+import Private from "./components/Private/Private.jsx";
+import Details from "./components/Detailes/Details.jsx";
+
+const fetchInfoById = async ({ params }) => {
+  const response = await fetch('/data.json');
+  const allData = await response.json();
+  return allData.find(info => info.id === params.id);  // Find the property by ID
+};
 
 const router = createBrowserRouter([
   {
@@ -44,6 +51,13 @@ const router = createBrowserRouter([
         element: <Properties></Properties>,
         loader: () => fetch("data.json"),
       },
+      {
+     
+          path : '/info/:id',
+          element : <Private> <Details></Details> </Private> ,
+          loader:fetchInfoById,
+        
+      }
     ],
   },
 ]);
