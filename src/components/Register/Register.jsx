@@ -1,15 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../ContextProvider/ContextProvider';
 
 const Register = () => {
 
-  const [createUser, setCreateUser] = useState("");
-  const [createUserError, setCreateUserError] = useState("");
+
+  const {createUser} = useContext(AuthContext);
+
+  const [createdUser, setCreatedUser] = useState("");
+  const [createdUserError, setCreatedUserError] = useState("");
 
       // show the top of the page after clicking on "Read more"
       useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+
+
 
     const handleRegister = (e) => {
       e.preventDefault();
@@ -20,8 +26,22 @@ const Register = () => {
 
       // console.log(name,email,password);
 
-      setCreateUser("");
-      setCreateUserError("");
+      setCreatedUser("");
+      setCreatedUserError("");
+
+      createUser(email,password)
+        .then(result => {
+          setCreatedUser("user created successfully!");
+            console.log(result.user);
+        })
+
+        .catch(error => {
+          setCreatedUser('error creating user')
+            console.log(error);
+
+        })
+
+
 
 // validation chacking
 
@@ -68,7 +88,17 @@ const Register = () => {
             </form>
             <p className='ml-4'>First time here? <Link to='/login' className='text-blue-600 font-bold'>Login here</Link> </p>
           </div>
+
+         
         </div>
+
+        {createdUser && (
+            <p className="text-green-600 text-center  p-2"> {createdUser} </p>
+          )}
+
+          {createdUserError && (
+            <p className="text-red-600 text-center p-2"> {createdUserError} </p>
+          )}
       </div>
     );
 };
