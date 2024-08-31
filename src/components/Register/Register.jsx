@@ -1,12 +1,32 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Register = () => {
+
+  const [createUser, setCreateUser] = useState("");
+  const [createUserError, setCreateUserError] = useState("");
 
       // show the top of the page after clicking on "Read more"
       useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+
+    const handleRegister = (e) => {
+      e.preventDefault();
+
+      const name = e.target.name.value;
+      const email = e.target.email.value;
+      const password = e.target.password.value;
+
+      // console.log(name,email,password);
+
+      setCreateUser("");
+      setCreateUserError("");
+
+// validation chacking
+
+
+    }
     return (
         <div className="heromin-h-screen">
         <div className="hero-content flex-col lg:flex-row-reverse">
@@ -15,7 +35,7 @@ const Register = () => {
          
           </div>
           <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-            <form className="card-body">
+            <form onSubmit={handleRegister} className="card-body">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Name</span>
