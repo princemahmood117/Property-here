@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const Register = () => {
+
+      // show the top of the page after clicking on "Read more"
+      useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     return (
         <div className="heromin-h-screen">
         <div className="hero-content flex-col lg:flex-row-reverse">

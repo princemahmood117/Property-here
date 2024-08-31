@@ -12,11 +12,14 @@ import Career from './components/Career/Career.jsx';
 import About from './components/About/About.jsx';
 import Login from './components/Login/Login.jsx';
 import Register from './components/Register/Register.jsx';
+import ErrorPage from './components/ErrorPage/ErrorPage.jsx';
+import Properties from './components/Properties/Properties.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element:<Root></Root>,
+    errorElement : <ErrorPage></ErrorPage>,
     children:[
       {
         path : '/',
@@ -38,6 +41,12 @@ const router = createBrowserRouter([
         path: '/register',
         element : <Register></Register>
       },
+      {
+        path : '/properties',
+        element : <Properties></Properties>,
+        loader : ()=>  fetch('data.json')
+
+      }
 
     ]
   },

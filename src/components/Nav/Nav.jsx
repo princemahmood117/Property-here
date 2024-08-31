@@ -1,7 +1,13 @@
+import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
 
 const Nav = () => {
+
+      // show the top of the page after clicking on "Read more"
+      useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     const links = 
 
