@@ -8,13 +8,13 @@ const PrivateRoute = ({ children }) => {
     const location = useLocation() 
     const { user, loading } = useContext(AuthContext);
     
-    if (loading) {
-        return (
-            <div className="mx-[50%] mt-16">
-        <span className="loading loading-dots loading-lg"></span>
-      </div>
-    );
-}
+//     if (loading) {
+//         return (
+//             <div className="mx-[50%] mt-16">
+//         <span className="loading loading-dots loading-lg"></span>
+//       </div>
+//     );
+// }
 
 
   if (user) {

@@ -13,6 +13,7 @@ import Properties from "./components/Properties/Properties.jsx";
 import ContextProvider from "./components/ContextProvider/ContextProvider.jsx";
 
 import Details from "./components/Detailes/Details.jsx";
+import PrivateRoute from "./components/PrivateRout/PrivateRoute.jsx";
 
 
 const fetchInfoById = async ({ params }) => {
@@ -54,7 +55,7 @@ const router = createBrowserRouter([
       },
       {
           path : '/info/:id',
-          element : <Details></Details>,
+          element : <PrivateRoute> <Details></Details> </PrivateRoute> ,
           // loader:fetchInfoById,
           loader : async ({params}) => {
             const response = await fetch('/data.json');
@@ -64,7 +65,7 @@ const router = createBrowserRouter([
             // console.log(params.id);
           }
         
-      }
+      },
     ],
   },
 ]);
