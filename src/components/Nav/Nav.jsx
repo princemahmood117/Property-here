@@ -94,9 +94,9 @@ const Nav = () => {
             {links}
           </ul>
         </div>
-        <a className="btn btn-ghost text-md">
+        <Link to='/' cLinkassName="btn btn-ghost text-md">
           Property <br /> Here
-        </a>
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
@@ -104,12 +104,8 @@ const Nav = () => {
       <div className="navbar-end">
         {user ? (
           <>
-            <span>
-              <div className="avatar">
-                <div className="w-10 rounded-full">
-                  <img src={user.image} />
-                </div>
-              </div>
+            <span className="mr-2">
+             {user.email}
             </span>
             <a onClick={handleLogOut} className="btn btn-sm">
               SignOut
