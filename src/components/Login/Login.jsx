@@ -44,6 +44,10 @@ const Login = () => {
     })
   }
 
+  const handleGithubSignIn = () => {
+
+  }
+
       // show the top of the page after clicking on "Read more"
       useEffect(() => {
         window.scrollTo(0, 0);
@@ -78,7 +82,11 @@ const Login = () => {
         </div>
 
         <div className='flex justify-center'>
-        <button onClick={handleGoogleSignIn} className="btn-ghost p-2 rounded-sm">Google</button>
+        <button onClick={handleGoogleSignIn} className="btn-ghost p-2 rounded-sm">Google Login</button>
+        </div>
+
+        <div className='flex justify-center'>
+        <button onClick={handleGithubSignIn} className="btn-ghost p-2 rounded-sm">Github Login</button>
         </div>
       </form>
 
