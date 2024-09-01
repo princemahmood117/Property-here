@@ -4,7 +4,7 @@ import { AuthContext } from '../ContextProvider/ContextProvider';
 
 const Login = () => {
 
-  const {signInUser,signInwithGoogle} = useContext(AuthContext);
+  const {signInUser,signInwithGoogle,signInwithGithub} = useContext(AuthContext);
   const [error,setError] = useState("");
 
   const location = useLocation();
@@ -23,7 +23,6 @@ const Login = () => {
     .then(result=>{
       console.log(result.user);
       navigate(location?.state ? location.state : '/')
-      // e.target.reset()
       }
     )
     .catch(() => {
@@ -36,15 +35,26 @@ const Login = () => {
     signInwithGoogle()
     .then(result=>{
       console.log(result.user);
-      e.target.reset()
-      Navigate('/')
+      navigate(location?.state ? location.state : '/')
+     
+     
     })
     .catch(error => {
       console.log(error);
     })
   }
 
-  const handleGithubSignIn = () => {
+  const handleGithubSignIn = (e) => {
+    signInwithGithub()
+    .then(result=> {
+      console.log(result.user);
+      navigate(location?.state ? location.state : '/')
+   
+      
+    })
+    .catch(error => {
+      console.log(error);
+    })
 
   }
 
@@ -82,11 +92,11 @@ const Login = () => {
         </div>
 
         <div className='flex justify-center'>
-        <button onClick={handleGoogleSignIn} className="btn-ghost p-2 rounded-sm">Google Login</button>
+        <button onClick={handleGoogleSignIn} className="btn p-2 rounded-sm hover:bg-blue-800 hover:text-white hover:w-full">Google Login</button>
         </div>
 
         <div className='flex justify-center'>
-        <button onClick={handleGithubSignIn} className="btn-ghost p-2 rounded-sm">Github Login</button>
+        <button onClick={handleGithubSignIn} className="btn p-2 rounded-sm hover:bg-blue-800 hover:text-white hover:w-full">Github Login</button>
         </div>
       </form>
 

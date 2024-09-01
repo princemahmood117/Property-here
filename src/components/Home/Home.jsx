@@ -2,6 +2,9 @@ import React, { useEffect } from "react";
 
 import bgi from "../../assets/banner.jpg";
 import { Link } from "react-router-dom";
+import SlideImages from "../SlideImages/SlideImages";
+
+
 
 
 const Home = () => {
@@ -43,6 +46,10 @@ const Home = () => {
           <li> {">"} Community Center</li>
           <li> {">"} Restaurent</li>
         </ul>
+      </div>
+
+      <div className="mt-10">
+        <SlideImages></SlideImages>
       </div>
 
 
