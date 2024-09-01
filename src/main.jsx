@@ -11,8 +11,9 @@ import Register from "./components/Register/Register.jsx";
 import ErrorPage from "./components/ErrorPage/ErrorPage.jsx";
 import Properties from "./components/Properties/Properties.jsx";
 import ContextProvider from "./components/ContextProvider/ContextProvider.jsx";
-import Private from "./components/Private/Private.jsx";
+
 import Details from "./components/Detailes/Details.jsx";
+
 
 const fetchInfoById = async ({ params }) => {
   const response = await fetch('/data.json');
@@ -52,10 +53,16 @@ const router = createBrowserRouter([
         loader: () => fetch("data.json"),
       },
       {
-     
           path : '/info/:id',
-          element : <Private> <Details></Details> </Private> ,
-          loader:fetchInfoById,
+          element : <Details></Details>,
+          // loader:fetchInfoById,
+          loader : async ({params}) => {
+            const response = await fetch('/data.json');
+            const allData = await response.json();
+            console.log(allData);
+            return allData.find(info => info.id == params.id);  // Find the property by ID
+            // console.log(params.id);
+          }
         
       }
     ],
