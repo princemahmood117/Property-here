@@ -9,7 +9,7 @@ const Properties = () => {
     }, []);
 
     const properties = useLoaderData();
-    console.log(properties);
+    // console.log(properties);
 
 
     return (

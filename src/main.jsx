@@ -34,7 +34,8 @@ const router = createBrowserRouter([
       },
       {
         path: "/career",
-        element: <Career></Career>,
+        element: <PrivateRoute> <Career></Career> </PrivateRoute>
+        ,
       },
       {
         path: "/about",

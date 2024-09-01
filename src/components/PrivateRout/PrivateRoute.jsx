@@ -5,22 +5,22 @@ import { AuthContext } from "../ContextProvider/ContextProvider";
 
 const PrivateRoute = ({ children }) => {
     
-    const location = useLocation() 
-    const { user, loading } = useContext(AuthContext);
     
-//     if (loading) {
-//         return (
-//             <div className="mx-[50%] mt-16">
-//         <span className="loading loading-dots loading-lg"></span>
-//       </div>
-//     );
-// }
-
+    const { user, loading } = useContext(AuthContext);
+    const location = useLocation() 
+    
+    if (loading) {
+        return (
+            <div className="mx-[50%] mt-16">
+        <span className="loading loading-dots loading-lg"></span>
+      </div>
+    );
+}
 
   if (user) {
     return children;
   }
-  return <Navigate state={location.pathname} to="/login"></Navigate>;
+  return <Navigate state={location.pathname} to="/login"></Navigate>; // that path will be redirected after successful login
 };
 
 export default PrivateRoute;
